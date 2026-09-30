@@ -4,7 +4,7 @@ import stryker4s.pluginapi.{CustomMutator, CustomMutatorPlugin}
 
 /** Service provider registering the Cats Effect mutators shipped by this library. */
 class CatsEffectMutatorPlugin extends CustomMutatorPlugin {
-  override def mutators: Seq[CustomMutator] = Seq(
+  override def mutators: List[CustomMutator] = List(
     new ConditionalEffectMutator,
     new ErrorHandlingMutator,
     new FallbackRemovalMutator,
