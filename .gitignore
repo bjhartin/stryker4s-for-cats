@@ -1,0 +1,7 @@
+.bsp/
+.bloop/
+.metals/
+.scala-staging/
+project/project/
+project/metals.sbt
+target/
