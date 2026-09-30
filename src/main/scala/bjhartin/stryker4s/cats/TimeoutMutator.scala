@@ -5,7 +5,7 @@ import stryker4s.pluginapi.*
 
 import scala.meta.*
 
-/** Example custom mutator: removes cats-effect timeout combinators.
+/** Custom mutator: removes cats-effect timeout combinators.
   *
   * `fa.timeout(d)`, `fa.timeoutTo(d, fallback)` and `fa.timeoutAndForget(d)` all become `fa`, so the effect is allowed
   * to run to completion instead of being cancelled at the deadline. This tests whether a suite actually asserts the

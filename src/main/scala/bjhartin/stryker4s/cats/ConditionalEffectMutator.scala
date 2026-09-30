@@ -5,7 +5,7 @@ import stryker4s.pluginapi.*
 
 import scala.meta.*
 
-/** Example custom mutator: flips cats-effect conditional effect helpers (`IO.whenA`/`IO.unlessA`,
+/** Custom mutator: flips cats-effect conditional effect helpers (`IO.whenA`/`IO.unlessA`,
   * `IO.raiseWhen`/`IO.raiseUnless`).
   *
   * These helpers encode side-effecting boolean guards, so flipping the guard helper tests whether the suite

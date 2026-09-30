@@ -5,7 +5,7 @@ import stryker4s.pluginapi.*
 
 import scala.meta.*
 
-/** Example custom mutator: removes deliberate delays.
+/** Custom mutator: removes deliberate delays.
   *
   * `IO.sleep(backoff)` becomes `IO.unit`, and `publish.delayBy(backoff)` / `publish.andWait(backoff)` become `publish`.
   * The surrounding effect keeps its type and still runs; only the waiting is gone.

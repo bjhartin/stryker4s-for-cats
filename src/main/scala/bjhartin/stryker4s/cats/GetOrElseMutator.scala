@@ -5,7 +5,7 @@ import stryker4s.pluginapi.*
 
 import scala.meta.*
 
-/** Example custom mutator: forces the default branch of `getOrElse`.
+/** Custom mutator: forces the default branch of `getOrElse`.
   *
   * `maybeQuantity.getOrElse(0)` becomes `0`, so the value carried by a `Some`/`Right` is never used. This tests whether
   * a suite covers the present case at all, or only ever exercises the empty case where the default is returned anyway.

@@ -5,7 +5,7 @@ import stryker4s.pluginapi.*
 
 import scala.meta.*
 
-/** Example custom mutator: removes cats-effect resource finalizers.
+/** Custom mutator: removes cats-effect resource finalizers.
   *
   *   - `Resource.make(acquire)(release)` becomes `Resource.eval(acquire)`
   *   - `fa.bracket(use)(release)` becomes `fa.flatMap(use)`

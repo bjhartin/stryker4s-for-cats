@@ -5,7 +5,7 @@ import stryker4s.pluginapi.*
 
 import scala.meta.*
 
-/** Example custom mutator: swaps sequential and parallel cats combinators.
+/** Custom mutator: swaps sequential and parallel cats combinators.
   *
   * `orders.traverse(f)` becomes `orders.parTraverse(f)` and vice versa, likewise for `traverse_`, `flatTraverse`,
   * `sequence`, `sequence_` and `mapN`.

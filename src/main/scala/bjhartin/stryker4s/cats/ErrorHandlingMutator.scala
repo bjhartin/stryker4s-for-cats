@@ -5,9 +5,9 @@ import stryker4s.pluginapi.*
 
 import scala.meta.*
 
-/** Example custom mutator: drops cats-effect/cats `MonadThrow`/`ApplicativeError` error-handling combinators
-  * (`.attempt`, `.handleErrorWith`, `.handleError`, `.recover`, `.recoverWith`, `.rethrow`), replacing
-  * `effect.combinator(...)` (or bare `effect.rethrow`/`effect.attempt`) with just `effect`.
+/** Custom mutator: drops cats-effect/cats `MonadThrow`/`ApplicativeError` error-handling combinators (`.attempt`,
+  * `.handleErrorWith`, `.handleError`, `.recover`, `.recoverWith`, `.rethrow`), replacing `effect.combinator(...)` (or
+  * bare `effect.rethrow`/`effect.attempt`) with just `effect`.
   *
   * Demonstrates a mutator category not covered by any of Stryker4s's built-in mutators nor by the generic
   * imperative-language categories (Arithmetic/Numeric/Collection Literal) added earlier: FP error-handling paths.

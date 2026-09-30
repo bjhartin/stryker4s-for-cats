@@ -5,8 +5,7 @@ import stryker4s.pluginapi.*
 
 import scala.meta.*
 
-/** Example custom mutator: removes cats-effect fallback behavior by replacing `primary.orElse(fallback)` with just
-  * `primary`.
+/** Custom mutator: removes cats-effect fallback behavior by replacing `primary.orElse(fallback)` with just `primary`.
   */
 class FallbackRemovalMutator extends CustomMutator {
   def matcher: MutationMatcher = {
@@ -29,8 +28,7 @@ class FallbackRemovalMutator extends CustomMutator {
   }
 }
 
-/** Example custom mutator: inverts cats-effect fallback behavior by replacing `primary.orElse(fallback)` with just
-  * `fallback`.
+/** Custom mutator: inverts cats-effect fallback behavior by replacing `primary.orElse(fallback)` with just `fallback`.
   */
 class FallbackInversionMutator extends CustomMutator {
   def matcher: MutationMatcher = {

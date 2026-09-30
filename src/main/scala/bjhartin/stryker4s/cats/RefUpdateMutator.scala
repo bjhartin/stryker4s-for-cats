@@ -5,7 +5,7 @@ import stryker4s.pluginapi.*
 
 import scala.meta.*
 
-/** Example custom mutator: neutralises a `Ref` update by replacing its function with `identity`.
+/** Custom mutator: neutralises a `Ref` update by replacing its function with `identity`.
   *
   * `counter.update(_ + 1)` becomes `counter.update(identity)`, so the effect still runs, still has the same type, and
   * still touches the same `Ref` — but leaves the state unchanged. A surviving mutant means nothing ever reads back the
