@@ -12,7 +12,7 @@ class HeadLastSwapMutatorTest extends munit.FunSuite {
 
   private def mutate(code: String): String = {
     val term = parseTerm(code)
-    val Right(mutations) = mutator.matcher(term)(stryker4s.pluginapi.PlaceableTree(term)): @unchecked
+    val Right(mutations) = mutator.matcher(term)(stryker4s.plugin.api.PlaceableTree(term)): @unchecked
     assertEquals(mutations.length, 1)
     assertEquals(mutations.head.metadata.mutatorName, "HeadLastSwap")
     mutations.head.mutatedStatement.syntax
@@ -44,7 +44,7 @@ class HeadLastSwapMutatorTest extends munit.FunSuite {
 
   test("records the endpoint it swapped in the mutant metadata") {
     val term = parseTerm("discounts.head")
-    val Right(mutations) = mutator.matcher(term)(stryker4s.pluginapi.PlaceableTree(term)): @unchecked
+    val Right(mutations) = mutator.matcher(term)(stryker4s.plugin.api.PlaceableTree(term)): @unchecked
 
     assertEquals(mutations.head.metadata.original, "head")
     assertEquals(mutations.head.metadata.replacement, "last")
@@ -54,7 +54,7 @@ class HeadLastSwapMutatorTest extends munit.FunSuite {
     val statement = parseTerm("discounts.sorted.head + 1")
     val term = statement.collect { case t: Term if t.syntax == "discounts.sorted.head" => t }.head
 
-    val Right(mutations) = mutator.matcher(term)(stryker4s.pluginapi.PlaceableTree(statement)): @unchecked
+    val Right(mutations) = mutator.matcher(term)(stryker4s.plugin.api.PlaceableTree(statement)): @unchecked
     assertEquals(mutations.head.mutatedStatement.syntax, "discounts.sorted.last + 1")
   }
 

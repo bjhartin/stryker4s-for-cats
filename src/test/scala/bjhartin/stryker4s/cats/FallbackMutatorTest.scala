@@ -18,7 +18,7 @@ class FallbackMutatorTest extends munit.FunSuite {
     assert(removalMutator.matcher.isDefinedAt(term))
 
     val Right(mutations) =
-      removalMutator.matcher(term)(stryker4s.pluginapi.PlaceableTree(term)): @unchecked
+      removalMutator.matcher(term)(stryker4s.plugin.api.PlaceableTree(term)): @unchecked
     assertEquals(mutations.length, 1)
     assertEquals(mutations.head.metadata.mutatorName, "FallbackRemoval")
     assertEquals(mutations.head.mutatedStatement.syntax, "primary")
@@ -30,7 +30,7 @@ class FallbackMutatorTest extends munit.FunSuite {
     assert(inversionMutator.matcher.isDefinedAt(term))
 
     val Right(mutations) =
-      inversionMutator.matcher(term)(stryker4s.pluginapi.PlaceableTree(term)): @unchecked
+      inversionMutator.matcher(term)(stryker4s.plugin.api.PlaceableTree(term)): @unchecked
     assertEquals(mutations.length, 1)
     assertEquals(mutations.head.metadata.mutatorName, "FallbackInversion")
     assertEquals(mutations.head.mutatedStatement.syntax, "fallback")
@@ -40,9 +40,9 @@ class FallbackMutatorTest extends munit.FunSuite {
     val term = parseTerm("primary.flatMap(next).orElse(makeFallback(value))")
 
     val Right(removalMutations) =
-      removalMutator.matcher(term)(stryker4s.pluginapi.PlaceableTree(term)): @unchecked
+      removalMutator.matcher(term)(stryker4s.plugin.api.PlaceableTree(term)): @unchecked
     val Right(inversionMutations) =
-      inversionMutator.matcher(term)(stryker4s.pluginapi.PlaceableTree(term)): @unchecked
+      inversionMutator.matcher(term)(stryker4s.plugin.api.PlaceableTree(term)): @unchecked
 
     assertEquals(removalMutations.head.mutatedStatement.syntax, "primary.flatMap(next)")
     assertEquals(inversionMutations.head.mutatedStatement.syntax, "makeFallback(value)")

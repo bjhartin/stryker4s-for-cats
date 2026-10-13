@@ -1,6 +1,6 @@
 package bjhartin.stryker4s.general
 
-import stryker4s.pluginapi.PlaceableTree
+import stryker4s.plugin.api.PlaceableTree
 
 import scala.meta.*
 

@@ -4,7 +4,7 @@ import scala.meta.*
 
 /** Unit tests for [[ErrorHandlingMutator]]'s matcher logic, written first (TDD) before the mutator implementation.
   * These test the `MutationMatcher` in isolation (parsing small snippets with scalameta, invoking the matcher directly)
-  * rather than running a full mutation-testing pass, mirroring the style of `stryker4s.pluginapi.CustomMutatorTest`.
+  * rather than running a full mutation-testing pass, mirroring the style of `stryker4s.plugin.api.CustomMutatorTest`.
   */
 class ErrorHandlingMutatorTest extends munit.FunSuite {
   private val mutator = new ErrorHandlingMutator
@@ -17,7 +17,7 @@ class ErrorHandlingMutatorTest extends munit.FunSuite {
 
     assert(mutator.matcher.isDefinedAt(term))
 
-    val Right(mutations) = mutator.matcher(term)(stryker4s.pluginapi.PlaceableTree(term)): @unchecked
+    val Right(mutations) = mutator.matcher(term)(stryker4s.plugin.api.PlaceableTree(term)): @unchecked
     assertEquals(mutations.length, 1)
     assertEquals(mutations.head.metadata.mutatorName, "ErrorHandling")
     assertEquals(mutations.head.mutatedStatement.syntax, "someEffect")
@@ -28,7 +28,7 @@ class ErrorHandlingMutatorTest extends munit.FunSuite {
 
     assert(mutator.matcher.isDefinedAt(term))
 
-    val Right(mutations) = mutator.matcher(term)(stryker4s.pluginapi.PlaceableTree(term)): @unchecked
+    val Right(mutations) = mutator.matcher(term)(stryker4s.plugin.api.PlaceableTree(term)): @unchecked
     assertEquals(mutations.length, 1)
     assertEquals(mutations.head.mutatedStatement.syntax, "someEffect")
   }
@@ -38,7 +38,7 @@ class ErrorHandlingMutatorTest extends munit.FunSuite {
 
     assert(mutator.matcher.isDefinedAt(term))
 
-    val Right(mutations) = mutator.matcher(term)(stryker4s.pluginapi.PlaceableTree(term)): @unchecked
+    val Right(mutations) = mutator.matcher(term)(stryker4s.plugin.api.PlaceableTree(term)): @unchecked
     assertEquals(mutations.head.mutatedStatement.syntax, "someEffect")
   }
 
@@ -47,7 +47,7 @@ class ErrorHandlingMutatorTest extends munit.FunSuite {
 
     assert(mutator.matcher.isDefinedAt(term))
 
-    val Right(mutations) = mutator.matcher(term)(stryker4s.pluginapi.PlaceableTree(term)): @unchecked
+    val Right(mutations) = mutator.matcher(term)(stryker4s.plugin.api.PlaceableTree(term)): @unchecked
     assertEquals(mutations.head.mutatedStatement.syntax, "someEffect")
   }
 
@@ -56,7 +56,7 @@ class ErrorHandlingMutatorTest extends munit.FunSuite {
 
     assert(mutator.matcher.isDefinedAt(term))
 
-    val Right(mutations) = mutator.matcher(term)(stryker4s.pluginapi.PlaceableTree(term)): @unchecked
+    val Right(mutations) = mutator.matcher(term)(stryker4s.plugin.api.PlaceableTree(term)): @unchecked
     assertEquals(mutations.head.mutatedStatement.syntax, "someEffect")
   }
 
@@ -65,7 +65,7 @@ class ErrorHandlingMutatorTest extends munit.FunSuite {
 
     assert(mutator.matcher.isDefinedAt(term))
 
-    val Right(mutations) = mutator.matcher(term)(stryker4s.pluginapi.PlaceableTree(term)): @unchecked
+    val Right(mutations) = mutator.matcher(term)(stryker4s.plugin.api.PlaceableTree(term)): @unchecked
     assertEquals(mutations.head.mutatedStatement.syntax, "someEffect")
   }
 
@@ -121,7 +121,7 @@ class ErrorHandlingMutatorTest extends munit.FunSuite {
     val term = statement.collect { case t: Term if t.syntax == "IO(a / b).handleErrorWith(_ => IO.pure(0))" => t }.head
 
     val Right(mutations) =
-      mutator.matcher(term)(stryker4s.pluginapi.PlaceableTree(statement)): @unchecked
+      mutator.matcher(term)(stryker4s.plugin.api.PlaceableTree(statement)): @unchecked
     assertEquals(mutations.length, 1)
     assertEquals(mutations.head.mutatedStatement.syntax, "IO(a / b).map(double)")
   }

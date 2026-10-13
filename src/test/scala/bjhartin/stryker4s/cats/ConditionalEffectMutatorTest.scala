@@ -16,7 +16,7 @@ class ConditionalEffectMutatorTest extends munit.FunSuite {
 
     assert(mutator.matcher.isDefinedAt(term))
 
-    val Right(mutations) = mutator.matcher(term)(stryker4s.pluginapi.PlaceableTree(term)): @unchecked
+    val Right(mutations) = mutator.matcher(term)(stryker4s.plugin.api.PlaceableTree(term)): @unchecked
     assertEquals(mutations.length, 1)
     assertEquals(mutations.head.metadata.mutatorName, "ConditionalEffect")
     mutations.head.mutatedStatement.syntax

@@ -1,6 +1,6 @@
 package bjhartin.stryker4s
 
-import stryker4s.pluginapi.CustomMutatorPlugin
+import stryker4s.plugin.CustomMutatorPlugin
 
 import java.util.ServiceLoader
 import scala.jdk.CollectionConverters.*

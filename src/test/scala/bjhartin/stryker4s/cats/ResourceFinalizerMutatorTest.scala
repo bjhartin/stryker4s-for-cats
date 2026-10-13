@@ -14,7 +14,7 @@ class ResourceFinalizerMutatorTest extends munit.FunSuite {
     val term = parseTerm(code)
     assert(mutator.matcher.isDefinedAt(term), s"expected matcher to be defined at: $code")
     val Right(mutations) =
-      mutator.matcher(term)(stryker4s.pluginapi.PlaceableTree(term)): @unchecked
+      mutator.matcher(term)(stryker4s.plugin.api.PlaceableTree(term)): @unchecked
     mutations
   }
 

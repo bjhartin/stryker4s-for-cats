@@ -1,7 +1,7 @@
 package bjhartin.stryker4s.cats
 
 import cats.data.NonEmptyVector
-import stryker4s.pluginapi.*
+import stryker4s.plugin.api.*
 
 import scala.meta.*
 

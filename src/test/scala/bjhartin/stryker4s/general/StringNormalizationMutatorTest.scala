@@ -13,7 +13,7 @@ class StringNormalizationMutatorTest extends munit.FunSuite {
 
   private def mutate(code: String): String = {
     val term = parseTerm(code)
-    val Right(mutations) = mutator.matcher(term)(stryker4s.pluginapi.PlaceableTree(term)): @unchecked
+    val Right(mutations) = mutator.matcher(term)(stryker4s.plugin.api.PlaceableTree(term)): @unchecked
     assertEquals(mutations.length, 1)
     assertEquals(mutations.head.metadata.mutatorName, "StringNormalization")
     mutations.head.mutatedStatement.syntax
@@ -51,7 +51,7 @@ class StringNormalizationMutatorTest extends munit.FunSuite {
     val statement = parseTerm("code.trim.toUpperCase")
     val term = statement.collect { case t: Term if t.syntax == "code.trim" => t }.head
 
-    val Right(mutations) = mutator.matcher(term)(stryker4s.pluginapi.PlaceableTree(statement)): @unchecked
+    val Right(mutations) = mutator.matcher(term)(stryker4s.plugin.api.PlaceableTree(statement)): @unchecked
     assertEquals(mutations.head.mutatedStatement.syntax, "code.toUpperCase")
   }
 

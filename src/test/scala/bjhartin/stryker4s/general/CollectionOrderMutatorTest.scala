@@ -12,7 +12,7 @@ class CollectionOrderMutatorTest extends munit.FunSuite {
 
   private def mutate(code: String): String = {
     val term = parseTerm(code)
-    val Right(mutations) = mutator.matcher(term)(stryker4s.pluginapi.PlaceableTree(term)): @unchecked
+    val Right(mutations) = mutator.matcher(term)(stryker4s.plugin.api.PlaceableTree(term)): @unchecked
     assertEquals(mutations.length, 1)
     assertEquals(mutations.head.metadata.mutatorName, "CollectionOrder")
     mutations.head.mutatedStatement.syntax
@@ -46,7 +46,7 @@ class CollectionOrderMutatorTest extends munit.FunSuite {
     val statement = parseTerm("discounts.sorted.headOption")
     val term = statement.collect { case t: Term if t.syntax == "discounts.sorted" => t }.head
 
-    val Right(mutations) = mutator.matcher(term)(stryker4s.pluginapi.PlaceableTree(statement)): @unchecked
+    val Right(mutations) = mutator.matcher(term)(stryker4s.plugin.api.PlaceableTree(statement)): @unchecked
     assertEquals(mutations.head.mutatedStatement.syntax, "discounts.headOption")
   }
 

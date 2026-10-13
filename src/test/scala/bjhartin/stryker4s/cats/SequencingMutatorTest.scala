@@ -18,7 +18,7 @@ class SequencingMutatorTest extends munit.FunSuite {
     assert(swapMutator.matcher.isDefinedAt(term))
 
     val Right(mutations) =
-      swapMutator.matcher(term)(stryker4s.pluginapi.PlaceableTree(term)): @unchecked
+      swapMutator.matcher(term)(stryker4s.plugin.api.PlaceableTree(term)): @unchecked
     assertEquals(mutations.length, 1)
     assertEquals(mutations.head.metadata.mutatorName, "SequencingSwap")
     assertEquals(mutations.head.mutatedStatement.syntax, "first <* second")
@@ -30,7 +30,7 @@ class SequencingMutatorTest extends munit.FunSuite {
     assert(swapMutator.matcher.isDefinedAt(term))
 
     val Right(mutations) =
-      swapMutator.matcher(term)(stryker4s.pluginapi.PlaceableTree(term)): @unchecked
+      swapMutator.matcher(term)(stryker4s.plugin.api.PlaceableTree(term)): @unchecked
     assertEquals(mutations.head.mutatedStatement.syntax, "first *> second")
   }
 
@@ -40,7 +40,7 @@ class SequencingMutatorTest extends munit.FunSuite {
     assert(removalMutator.matcher.isDefinedAt(term))
 
     val Right(mutations) =
-      removalMutator.matcher(term)(stryker4s.pluginapi.PlaceableTree(term)): @unchecked
+      removalMutator.matcher(term)(stryker4s.plugin.api.PlaceableTree(term)): @unchecked
     assertEquals(mutations.length, 1)
     assertEquals(mutations.head.metadata.mutatorName, "SequencingRemoval")
     assertEquals(mutations.head.mutatedStatement.syntax, "second")
@@ -52,7 +52,7 @@ class SequencingMutatorTest extends munit.FunSuite {
     assert(removalMutator.matcher.isDefinedAt(term))
 
     val Right(mutations) =
-      removalMutator.matcher(term)(stryker4s.pluginapi.PlaceableTree(term)): @unchecked
+      removalMutator.matcher(term)(stryker4s.plugin.api.PlaceableTree(term)): @unchecked
     assertEquals(mutations.head.mutatedStatement.syntax, "first")
   }
 
@@ -60,9 +60,9 @@ class SequencingMutatorTest extends munit.FunSuite {
     val term = parseTerm("validate(value) *> persist(value)")
 
     val Right(swapMutations) =
-      swapMutator.matcher(term)(stryker4s.pluginapi.PlaceableTree(term)): @unchecked
+      swapMutator.matcher(term)(stryker4s.plugin.api.PlaceableTree(term)): @unchecked
     val Right(removalMutations) =
-      removalMutator.matcher(term)(stryker4s.pluginapi.PlaceableTree(term)): @unchecked
+      removalMutator.matcher(term)(stryker4s.plugin.api.PlaceableTree(term)): @unchecked
 
     assertEquals(swapMutations.head.mutatedStatement.syntax, "validate(value) <* persist(value)")
     assertEquals(removalMutations.head.mutatedStatement.syntax, "persist(value)")

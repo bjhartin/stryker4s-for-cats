@@ -1,6 +1,7 @@
 package bjhartin.stryker4s.cats
 
-import stryker4s.pluginapi.{CustomMutator, CustomMutatorPlugin}
+import stryker4s.plugin.CustomMutatorPlugin
+import stryker4s.plugin.api.CustomMutator
 
 /** Service provider registering the Cats Effect mutators shipped by this library. */
 class CatsEffectMutatorPlugin extends CustomMutatorPlugin {
