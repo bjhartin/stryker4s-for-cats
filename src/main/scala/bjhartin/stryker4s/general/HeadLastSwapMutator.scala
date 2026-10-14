@@ -1,6 +1,6 @@
 package bjhartin.stryker4s.general
 
-import cats.data.NonEmptyVector
+import bjhartin.stryker4s.SingleMutation
 import stryker4s.plugin.api.*
 
 import scala.meta.*
@@ -34,7 +34,7 @@ class HeadLastSwapMutator extends CustomMutator {
         val replacementName = swapped(name)
         val replacement = Term.Select(receiver, Term.Name(replacementName))
         val metadata = MutantMetadata(name, replacementName, "HeadLastSwap", term.pos, None)
-        Right(NonEmptyVector.one(MutatedCode(placeableTree.substitute(term, replacement), metadata)))
+        SingleMutation(placeableTree, term, replacement, metadata)
       }
   }
 }

@@ -1,6 +1,6 @@
 package bjhartin.stryker4s.cats
 
-import cats.data.NonEmptyVector
+import bjhartin.stryker4s.SingleMutation
 import stryker4s.plugin.api.*
 
 import scala.meta.*
@@ -63,6 +63,6 @@ class ResourceFinalizerMutator extends CustomMutator {
       placeableTree: PlaceableTree
   ): Either[IgnoredMutations, Mutations] = {
     val metadata = MutantMetadata(removed, "no finalizer", "ResourceFinalizer", term.pos, None)
-    Right(NonEmptyVector.one(MutatedCode(placeableTree.substitute(term, replacement), metadata)))
+    SingleMutation(placeableTree, term, replacement, metadata)
   }
 }

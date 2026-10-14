@@ -1,6 +1,6 @@
 package bjhartin.stryker4s.general
 
-import cats.data.NonEmptyVector
+import bjhartin.stryker4s.SingleMutation
 import stryker4s.plugin.api.*
 
 import scala.meta.*
@@ -41,6 +41,6 @@ class StringNormalizationMutator extends CustomMutator {
       placeableTree: PlaceableTree
   ): Either[IgnoredMutations, Mutations] = {
     val metadata = MutantMetadata(removed, "unnormalized", "StringNormalization", term.pos, None)
-    Right(NonEmptyVector.one(MutatedCode(placeableTree.substitute(term, receiver), metadata)))
+    SingleMutation(placeableTree, term, receiver, metadata)
   }
 }

@@ -1,6 +1,6 @@
 package bjhartin.stryker4s.cats
 
-import cats.data.NonEmptyVector
+import bjhartin.stryker4s.SingleMutation
 import stryker4s.plugin.api.*
 
 import scala.meta.*
@@ -61,6 +61,6 @@ class ErrorHandlingMutator extends CustomMutator {
       placeableTree: PlaceableTree
   ): Either[IgnoredMutations, Mutations] = {
     val metadata = MutantMetadata(s".$combinatorName", "", "ErrorHandling", term.pos, None)
-    Right(NonEmptyVector.one(MutatedCode(placeableTree.substitute(term, receiver), metadata)))
+    SingleMutation(placeableTree, term, receiver, metadata)
   }
 }

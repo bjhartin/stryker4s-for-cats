@@ -1,6 +1,6 @@
 package bjhartin.stryker4s.cats
 
-import cats.data.NonEmptyVector
+import bjhartin.stryker4s.SingleMutation
 import stryker4s.plugin.api.*
 
 import scala.meta.*
@@ -28,7 +28,7 @@ class SequencingSwapMutator extends CustomMutator {
       placeableTree: PlaceableTree
   ): Either[IgnoredMutations, Mutations] = {
     val metadata = MutantMetadata(term.op.value, to, "SequencingSwap", term.pos, None)
-    Right(NonEmptyVector.one(MutatedCode(placeableTree.substitute(term, replacement), metadata)))
+    SingleMutation(placeableTree, term, replacement, metadata)
   }
 }
 
@@ -51,6 +51,6 @@ class SequencingRemovalMutator extends CustomMutator {
       placeableTree: PlaceableTree
   ): Either[IgnoredMutations, Mutations] = {
     val metadata = MutantMetadata(from, to, "SequencingRemoval", term.pos, None)
-    Right(NonEmptyVector.one(MutatedCode(placeableTree.substitute(term, replacement), metadata)))
+    SingleMutation(placeableTree, term, replacement, metadata)
   }
 }

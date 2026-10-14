@@ -1,6 +1,6 @@
 package bjhartin.stryker4s.general
 
-import cats.data.NonEmptyVector
+import bjhartin.stryker4s.SingleMutation
 import stryker4s.plugin.api.*
 
 import scala.meta.*
@@ -28,6 +28,6 @@ class CollectionLiteralMutator extends CustomMutator {
   ): Either[IgnoredMutations, Mutations] = {
     val mutated = Term.Select(Term.Name(collectionName), Term.Name("empty"))
     val metadata = MutantMetadata(term.reprint(), mutated.reprint(), "CollectionLiteral", term.pos, None)
-    Right(NonEmptyVector.one(MutatedCode(placeableTree.substitute(term, mutated), metadata)))
+    SingleMutation(placeableTree, term, mutated, metadata)
   }
 }

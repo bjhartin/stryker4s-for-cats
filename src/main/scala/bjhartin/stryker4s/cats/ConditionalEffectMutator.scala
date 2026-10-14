@@ -1,6 +1,6 @@
 package bjhartin.stryker4s.cats
 
-import cats.data.NonEmptyVector
+import bjhartin.stryker4s.SingleMutation
 import stryker4s.plugin.api.*
 
 import scala.meta.*
@@ -53,6 +53,6 @@ class ConditionalEffectMutator extends CustomMutator {
   ): Either[IgnoredMutations, Mutations] = {
     val metadata =
       MutantMetadata(s".$originalName", s".$replacementName", "ConditionalEffect", term.pos, None)
-    Right(NonEmptyVector.one(MutatedCode(placeableTree.substitute(term, replacement), metadata)))
+    SingleMutation(placeableTree, term, replacement, metadata)
   }
 }

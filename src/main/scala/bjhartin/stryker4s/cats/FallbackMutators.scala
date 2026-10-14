@@ -1,6 +1,6 @@
 package bjhartin.stryker4s.cats
 
-import cats.data.NonEmptyVector
+import bjhartin.stryker4s.SingleMutation
 import stryker4s.plugin.api.*
 
 import scala.meta.*
@@ -24,7 +24,7 @@ class FallbackRemovalMutator extends CustomMutator {
       mutatorName: String
   )(placeableTree: PlaceableTree): Either[IgnoredMutations, Mutations] = {
     val metadata = MutantMetadata(original, replacementDescription, mutatorName, term.pos, None)
-    Right(NonEmptyVector.one(MutatedCode(placeableTree.substitute(term, replacement), metadata)))
+    SingleMutation(placeableTree, term, replacement, metadata)
   }
 }
 
@@ -48,6 +48,6 @@ class FallbackInversionMutator extends CustomMutator {
       mutatorName: String
   )(placeableTree: PlaceableTree): Either[IgnoredMutations, Mutations] = {
     val metadata = MutantMetadata(original, replacementDescription, mutatorName, term.pos, None)
-    Right(NonEmptyVector.one(MutatedCode(placeableTree.substitute(term, replacement), metadata)))
+    SingleMutation(placeableTree, term, replacement, metadata)
   }
 }

@@ -1,6 +1,6 @@
 package bjhartin.stryker4s.general
 
-import cats.data.NonEmptyVector
+import bjhartin.stryker4s.SingleMutation
 import stryker4s.plugin.api.*
 
 import scala.meta.*
@@ -21,6 +21,6 @@ class NumericLiteralMutator extends CustomMutator {
   ): Either[IgnoredMutations, Mutations] = {
     val from = lit.value.toString
     val metadata = MutantMetadata(from, incremented.toString, "NumericLiteral", lit.pos, None)
-    Right(NonEmptyVector.one(MutatedCode(placeableTree.substitute(lit, Lit.Int(incremented)), metadata)))
+    SingleMutation(placeableTree, lit, Lit.Int(incremented), metadata)
   }
 }
